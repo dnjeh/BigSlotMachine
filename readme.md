@@ -6,3 +6,12 @@
 ```
 > Made with C11
 ```
+
+```
+> Console Settings
+ W 200 H 45
+ Size 20px
+ Font Consolas
+ Insert mode (0)
+ Quick edit mode (0)
+```
