@@ -9,7 +9,7 @@
 
 ```
 > Console Settings
- W 200 H 45
+ W 100 H 45
  Size 20px
  Font Consolas
  Insert mode (0)
