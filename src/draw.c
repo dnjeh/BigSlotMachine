@@ -106,3 +106,23 @@ void drwConfig() {
     SetConsoleCursorPosition(buf[bufNow], Coor);
     WriteFile(buf[bufNow], temp, strlen(temp), &dw, NULL);        
 }
+
+void drwAlarm(char *str) {
+    char temp[50]={'\0'};
+    CONSOLE_CURSOR_INFO cci;
+    COORD Coor = {DRW_ALARM_X, DRW_ALARM_Y};
+    DWORD dw;
+    
+    sprintf(temp, "> %s: %s (%d행)", "원본 파일 이름", pahCsv, bsmDataCnt);
+    SetConsoleCursorPosition(buf[bufNow], Coor);
+    WriteFile(buf[bufNow], temp, strlen(temp), &dw, NULL); 
+
+}
+
+void drwSlot(int sind, int dy, int t, int tt, int ttt) {
+
+}
+
+void drwAreaSlot(int y, int x, int fy, int fx, int ty, int tx, int t, int tt, int ttt) {
+
+}

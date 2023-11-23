@@ -22,6 +22,10 @@ void bsmInit() {
         } fscanf(fp, "%d\n", &bsmiData[8]);
     } bsmDataCnt=i;
     fclose(fp);
+    drwSlot(0, 0, 0, 0, 0);
+    drwSlot(1, 0, 0, 0, 0);
+    drwSlot(2, 0, 0, 0, 0);
+    drwAlarm("Enter 키를 눌러 운명을 확인하세요!");
 }
 
 void rmEnt(char *str, int siz) {

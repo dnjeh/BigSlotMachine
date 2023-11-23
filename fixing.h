@@ -33,6 +33,8 @@
 #define CON_LINE2_Y 36
 #define CON_LINE3_Y 37
 
+#define DRW_ALARM_X
+
 extern FILE *fp, *fp2;
 
 extern char pahCon[20];
@@ -74,6 +76,10 @@ void bufChange();
 void drwInit();
 void drwHandle(int dy, int f);
 void drwConfig();
+void drwAlarm(char *str);
+void drwSlot(int sind, int dy, int t, int tt, int ttt);
+void drwAreaSlot(int y, int x, 
+int fy, int fx, int ty, int tx, int t, int tt, int ttt);
 
 //스레드(입력) 관련 함수
 unsigned __stdcall readChar(void *arg);

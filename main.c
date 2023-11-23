@@ -9,8 +9,8 @@ int main() {
     
     pahInit();
     bufInit();
-    bsmInit();
     drwInit();
+    bsmInit();
 
     _beginthreadex(NULL, 0, readChar, 0, 0, NULL);
     for(bsmFrameNow=0;;bsmFrameNow++) {
