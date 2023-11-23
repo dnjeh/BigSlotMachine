@@ -11,7 +11,6 @@
 ```
 > Console Settings
  W 100 H 45
- Size 12px
  Font Consolas
 ```
 

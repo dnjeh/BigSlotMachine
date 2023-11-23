@@ -1,5 +1,5 @@
 #include "fixing.h"
-//gcc -fdiagnostics-color=always -g .\main.c .\fixing.c .\src\buffer.c .\src\path.c -o bsm.exe -lm
+//gcc -fdiagnostics-color=always -g .\main.c .\fixing.c .\src\buffer.c .\src\path.c .\src\draw.c .\src\read.c -o bsm.exe -lm
 int main() {
     char t;
     int i, j;
@@ -9,10 +9,17 @@ int main() {
     
     pahInit();
     bufInit();
+    bsmInit();
     drwInit();
-    while(1) {
-        t=_getch();
+
+    _beginthreadex(NULL, 0, readChar, 0, 0, NULL);
+    for(bsmFrameNow=0;;bsmFrameNow++) {
+        if(bsmFrameNow>=50) bsmFrameNow=0;
+        drwConfig();
+        if(bsmFrameNow>25) drwHandle(0, 1);
+        else drwHandle(0, 0);
         Sleep(20);
+        bufChange();
     }
     bufRel();
 }

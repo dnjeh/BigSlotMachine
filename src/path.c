@@ -8,10 +8,10 @@ char pahRes[20]={'\0', };
 void pahInit() {
     fp=fopen(pahCon, "r");     
     fgets(pahCsv, sizeof(pahCsv), fp);
-    rmEnt(pahCsv);
+    rmEnt(pahCsv, sizeof(pahCsv));
     fgets(pahLog, sizeof(pahLog), fp);
-    rmEnt(pahLog);
+    rmEnt(pahLog, sizeof(pahLog));
     fgets(pahRes, sizeof(pahRes), fp);
-    rmEnt(pahRes);
+    rmEnt(pahRes, sizeof(pahRes));
     fclose(fp);
 }

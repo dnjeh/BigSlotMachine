@@ -1,12 +1,14 @@
 #include "../fixing.h"
 
+int bufNow=0;
+
 void bufChange() {
     SetConsoleActiveScreenBuffer(buf[bufNow]);
     bufNow=!bufNow;
 }
 void bufInit() {
-    int i;
-    char temp[20], temp2[70];
+    int i, j;
+    char temp[20]="", temp2[70]="";
     CONSOLE_CURSOR_INFO cci;
     COORD Coor = {SLOT_INIT_X, SLOT_INIT_Y};
     DWORD dw;
@@ -23,13 +25,15 @@ void bufInit() {
     fp=fopen(temp, "r");     
     for(i=0;i<SLOT_SIZ_Y;i++) {
         fgets(temp2, sizeof(temp2), fp);
-        rmEnt(temp2);
+        rmEnt(temp2, sizeof(temp2));
         Coor.Y=i+SLOT_INIT_Y;
-        SetConsoleCursorPosition(buf[bufNow], Coor);
-        WriteFile(buf[bufNow], temp2, strlen(temp2), &dw, NULL);        
+        for(j=0;j<2;j++) {
+            SetConsoleCursorPosition(buf[j], Coor);
+            WriteFile(buf[j], temp2, strlen(temp2), &dw, NULL);        
+        }
     }
     fclose(fp);
-    SetConsoleActiveScreenBuffer(buf[bufNow]);
+    bufChange();
 }
 void bufRel() {
     CloseHandle(buf[0]);
