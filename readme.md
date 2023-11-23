@@ -5,13 +5,19 @@
 ```
 ```
 > Made with C11
+> Run on Win11
 ```
 
 ```
 > Console Settings
  W 100 H 45
- Size 20px
+ Size 12px
  Font Consolas
- Insert mode (0)
- Quick edit mode (0)
+```
+
+```
+> Key Sets
+ run : '\n'   //Enter
+ remove winning person : z
+ real random mode : x
 ```

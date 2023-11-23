@@ -7,30 +7,38 @@
 #include <errno.h>   //파일 쓸때 같이 씀
 #include <process.h> //스레드 관련 헤더파일?
 
-static HANDLE bsmBuf[2];
-static int bsmNowBuf;
-static int usedGacha;
-static int usedSlot;
+#define SLOT_SIZ_Y 42
+#define SLOT_HANDLE_X 0
+#define SLOT_HANDLE_Y 0
+#define SLOT_INIT_X 17
+#define SLOT_INIT_Y 1
+
+#define 
+
+extern FILE *fp, *fp2;
+
+extern char pahCon[20];
+extern char pahCsv[20];
+extern char pahLog[20];
+extern char pahRes[20];
+
+extern HANDLE buf[2];
+extern int bufNow;
+
+extern int drwIsLet[7][3][20];
+extern char drwLet[7][3][20][9][15];
+
+//경로 관련 함수
+void pahInit();
 
 //화면 관련 함수
+void bufInit();
+void bufRel();
 void bufChange();
 
+//표현 관련 함수
+void drwInit();
+void drwHandle();
+
 //스레드 관련 함수
-unsigned __stdcall clickthr(void *arg);
-unsigned __stdcall gachaScroll(void *arg);
-unsigned __stdcall gachaUpdate(void *arg);
-unsigned __stdcall slot(void *arg);
-
-void ScreenInit() {
-    CONSOLE_CURSOR_INFO cci;
-
-    // 화면 버퍼 2개를 만든다.
-    bsmBuf[0] = CreateConsoleScreenBuffer(GENERIC_READ | GENERIC_WRITE, 0, NULL, CONSOLE_TEXTMODE_BUFFER, NULL);
-    bsmBuf[1] = CreateConsoleScreenBuffer(GENERIC_READ | GENERIC_WRITE, 0, NULL, CONSOLE_TEXTMODE_BUFFER, NULL);
-
-    // 커서를 숨긴다.
-    cci.dwSize = 1;
-    cci.bVisible = 0;
-    SetConsoleCursorInfo(bsmBuf[0], &cci);
-    SetConsoleCursorInfo(bsmBuf[1], &cci);
-}
+unsigned __stdcall readChar(void *arg);
