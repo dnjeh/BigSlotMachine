@@ -19,6 +19,11 @@
 #define SLOT_INIT_X 17
 #define SLOT_INIT_Y 1
 
+#define SLOT_SLOT0_X 23
+#define SLOT_SLOT1_X 43
+#define SLOT_SLOT2_X 63
+#define SLOT_SLOT_Y 14
+
 #define LET_MAX_Y 9
 #define LET_MAX_X 15
 #define LET_JA_MAX 19
@@ -33,7 +38,8 @@
 #define CON_LINE2_Y 36
 #define CON_LINE3_Y 37
 
-#define DRW_ALARM_X
+#define DRW_ALARM_X 31
+#define DRW_ALARM_Y 26
 
 extern FILE *fp, *fp2;
 
@@ -58,7 +64,7 @@ extern int bsmIsRmName;
 extern int bsmFrameNow;
 extern int bsmiData[100][9];
 extern int bsmDataCnt;
-extern char bsmcData[100][20];
+extern char bsmcData[100][50];
 
 //
 void bsmInit();
@@ -74,12 +80,14 @@ void bufChange();
 
 //표현 관련 함수
 void drwInit();
+void drwBuf(int y, int x, char *str);
+void drwFullBuf(int y, int x, char *str);
+void drwFirst();
 void drwHandle(int dy, int f);
 void drwConfig();
 void drwAlarm(char *str);
 void drwSlot(int sind, int dy, int t, int tt, int ttt);
-void drwAreaSlot(int y, int x, 
-int fy, int fx, int ty, int tx, int t, int tt, int ttt);
+void drwAreaSlot(int y, int x, int t, int tt, int ttt);
 
 //스레드(입력) 관련 함수
 unsigned __stdcall readChar(void *arg);

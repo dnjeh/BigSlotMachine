@@ -10,14 +10,17 @@ int main() {
     pahInit();
     bufInit();
     drwInit();
+    drwFirst();
     bsmInit();
 
+    bufChange();
     _beginthreadex(NULL, 0, readChar, 0, 0, NULL);
     for(bsmFrameNow=0;;bsmFrameNow++) {
         if(bsmFrameNow>=50) bsmFrameNow=0;
         drwConfig();
         if(bsmFrameNow>25) drwHandle(0, 1);
         else drwHandle(0, 0);
+        drwAlarm(bsmcData[0]);
         Sleep(20);
         bufChange();
     }
