@@ -1,4 +1,5 @@
 #include <stdio.h>   //만국공통
+#include <stdlib.h>  //랜덤 전용
 #include <conio.h>   //콘솔 관련 명령어 포함
 #include <io.h>      //기억상, 파일 입출력 관련
 #include <time.h>    //시간 관련
@@ -15,7 +16,7 @@
 #define SLOT_HANDLE_SIZ_X 10
 #define SLOT_HANDLE_SIZ_Y 10
 #define SLOT_HANDLE_BALL_SIZ_X 9
-#define SLOT_HANDLE_BALL_SIZ_Y 4
+#define SLOT_HANDLE_BALL_SIZ_Y 5
 #define SLOT_INIT_X 17
 #define SLOT_INIT_Y 1
 
@@ -61,7 +62,11 @@ extern int readIsAct;
 extern int bsmIsAct;
 extern int bsmIsRealRand;
 extern int bsmIsRmName;
+
+extern clock_t bsmCurTime, bsmOldTime;
 extern int bsmFrameNow;
+extern int bsmRunNow;
+
 extern int bsmiData[100][9];
 extern int bsmDataCnt;
 extern char bsmcData[100][50];

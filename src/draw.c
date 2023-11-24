@@ -8,14 +8,17 @@ char drwCHandleBall[2][SLOT_HANDLE_BALL_SIZ_Y][SLOT_HANDLE_BALL_SIZ_X+6]={{'\0',
 void drwInit() {
     char tpath[30];
     int i, j, k, l, m, kmax;
-    sprintf(tpath, "%s/letter/%d/%d/%d.txt", pahRes, 0, 0, 0);
-    if((fp=fopen(tpath, "r"))!=NULL) {
-        drwIsLet[0][0][0]=1;
-        for(l=0;l<LET_MAX_Y;l++) {
-            fgets(drwLet[0][0][0][l], sizeof(drwLet[0][0][0][l]), fp);
-            rmEnt(drwLet[0][0][0][l], sizeof(drwLet[0][0][0][l]));
+
+    for(k=0;k<=1;k++) {
+        sprintf(tpath, "%s/letter/%d/%d/%d.txt", pahRes, 0, 0, k);
+        if((fp=fopen(tpath, "r"))!=NULL) {
+            drwIsLet[0][0][k]=1;
+            for(l=0;l<LET_MAX_Y;l++) {
+                fgets(drwLet[0][0][k][l], sizeof(drwLet[0][0][k][l]), fp);
+                rmEnt(drwLet[0][0][k][l], sizeof(drwLet[0][0][k][l]));
+            }
+            fclose(fp);
         }
-        fclose(fp);
     }
     for(i=1;i<=6;i++) {
         for(j=1;j<=(i>3?3:2);j++) {
@@ -26,10 +29,10 @@ void drwInit() {
                 kmax=LET_14_MO_MAX;
                 break;
             case 2: case 5: 
-                kmax=LET_25_MO_MAX;
+                kmax=LET_14_MO_MAX+LET_25_MO_MAX;
                 break;
             case 3: case 6: 
-                kmax=LET_36_MO_MAX;
+                kmax=LET_14_MO_MAX+LET_25_MO_MAX+LET_36_MO_MAX;
                 break;
             }
             for(k=1;k<=kmax;k++) {
@@ -167,10 +170,18 @@ void drwAreaSlot(int y, int x, int t, int tt, int ttt) {
 void drwFirst() {
     int i;
     for(i=0;i<2;i++) {
-        drwSlot(0, 0, bsmiData[i][0], bsmiData[i][1], bsmiData[i][2]);
-        drwSlot(1, 0, bsmiData[i][3], bsmiData[i][4], bsmiData[i][5]);
-        drwSlot(2, 0, bsmiData[i][6], bsmiData[i][7], bsmiData[i][8]);
-        drwAlarm("Enter 키를 눌러 운명을 확인하세요!");
+        //drwSlot(0, 0, 1, 9, 5);
+        //drwSlot(1, 0, 3, 10, 0);
+        //drwSlot(2, 0, 8, 18, 2);
+        drwSlot(0, 0, bsmiData[0][0], bsmiData[0][1], bsmiData[0][2]);
+        drwSlot(1, 0, bsmiData[0][3], bsmiData[0][4], bsmiData[0][5]);
+        drwSlot(2, 0, bsmiData[0][6], bsmiData[0][7], bsmiData[0][8]);
+        if(bsmDataCnt) {
+            drwAlarm("Enter 키를 눌러 운명을 확인하세요!");
+        }
+        else {
+            drwAlarm("파일이 읽어지지 않았습니다!");
+        }
         bufChange();
     }
 }

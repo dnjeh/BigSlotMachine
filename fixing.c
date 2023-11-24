@@ -12,16 +12,31 @@ int bsmIsRmName=1;
 int bsmFrameNow=0;
 
 void bsmInit() {
-    int i, j;
-    char t[100], tt[100];
+    int i, j, f=0, it;
+    char t[100];
     fp=fopen(pahCsv, "r");
     for(i=0;!feof(fp);i++) {
-        fscanf(fp, "%s,", bsmcData[i]);
-        for(j=0;j<8;j++) {
-            fscanf(fp, "%d,", &bsmiData[i][j]);
-        } fscanf(fp, "%d\n", &bsmiData[i][8]);
+        fgets(t, sizeof(t), fp);
+        for(f=j=0;t[j]!='\n';j++) {
+            if(t[j]==',') {
+                if(f) {
+                    bsmiData[i][f-1]=it;
+                }
+                f++;
+                it=0;
+            }
+            else {
+                if(!f) {
+                    bsmcData[i][j]=t[j];
+                } 
+                else {
+                    it=it*10+t[j]-48;
+                }
+            }
+        } bsmiData[i][f-1]=it;
     } bsmDataCnt=i;
     fclose(fp);
+    srand(time(NULL));
 }
 
 void rmEnt(char *str, int siz) {

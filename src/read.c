@@ -6,7 +6,7 @@ unsigned __stdcall readChar(void *arg) {
     char t;
     while(1) {
         t=_getch();
-        if(readIsAct) {
+        if(bsmDataCnt&&readIsAct) {
             if(t==13) {
                 readIsAct=0;
                 bsmIsAct=1;
