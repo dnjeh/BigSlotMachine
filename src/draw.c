@@ -173,9 +173,9 @@ void drwFirst() {
         //drwSlot(0, 0, 1, 9, 5);
         //drwSlot(1, 0, 3, 10, 0);
         //drwSlot(2, 0, 8, 18, 2);
-        drwSlot(0, 0, bsmiData[0][0], bsmiData[0][1], bsmiData[0][2]);
-        drwSlot(1, 0, bsmiData[0][3], bsmiData[0][4], bsmiData[0][5]);
-        drwSlot(2, 0, bsmiData[0][6], bsmiData[0][7], bsmiData[0][8]);
+        drwSlot(0, 0, 0, 0, 0);
+        drwSlot(1, 0, 0, 0, 0);
+        drwSlot(2, 0, 0, 0, 0);
         if(bsmDataCnt) {
             drwAlarm("Enter 키를 눌러 운명을 확인하세요!");
         }

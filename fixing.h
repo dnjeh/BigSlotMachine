@@ -67,12 +67,13 @@ extern clock_t bsmCurTime, bsmOldTime;
 extern int bsmFrameNow;
 extern int bsmRunNow;
 
-extern int bsmiData[100][9];
+extern int bsmiData[100][15];
 extern int bsmDataCnt;
 extern char bsmcData[100][50];
 
 //
 void bsmInit();
+int bsmFind(int sta);
 void rmEnt(char *str, int siz);
 
 //경로 관련 함수

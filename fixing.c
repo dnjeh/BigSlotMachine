@@ -3,7 +3,7 @@
 HANDLE buf[2];
 FILE *fp=NULL, *fp2=NULL;
 int bsmDataCnt=0;
-int bsmiData[100][9]={{0,}};
+int bsmiData[100][15]={{0,}};
 char bsmcData[100][50]={{'\0',}};
 
 int bsmIsAct=0;
@@ -37,6 +37,16 @@ void bsmInit() {
     } bsmDataCnt=i;
     fclose(fp);
     srand(time(NULL));
+}
+
+int bsmFind(int sta) {
+    int ret=sta+1;
+    for(ret%=bsmDataCnt;;ret=(ret+1)%bsmDataCnt) {
+        if(bsmcData[ret][0]) {
+            return ret;
+        }
+    }
+    return 0;
 }
 
 void rmEnt(char *str, int siz) {

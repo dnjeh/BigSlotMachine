@@ -12,10 +12,10 @@ unsigned __stdcall readChar(void *arg) {
                 bsmIsAct=1;
             }
             else if(t=='z') {
-                bsmIsRmName=!bsmIsRmName;
+                //bsmIsRmName=!bsmIsRmName;
             }
             else if(t=='x') {
-                bsmIsRealRand=!bsmIsRealRand;
+                //bsmIsRealRand=!bsmIsRealRand;
             }
         }
     }
