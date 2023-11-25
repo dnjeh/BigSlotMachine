@@ -17,7 +17,7 @@ void bsmInit() {
     fp=fopen(pahCsv, "r");
     for(i=0;!feof(fp);i++) {
         fgets(t, sizeof(t), fp);
-        for(f=j=0;t[j]!='\n';j++) {
+        for(f=j=0;t[j]&&t[j]!='\n';j++) {
             if(t[j]==',') {
                 if(f) {
                     bsmiData[i][f-1]=it;
@@ -35,7 +35,7 @@ void bsmInit() {
             }
         } bsmiData[i][f-1]=it;
     } bsmDataCnt=i;
-    bsmiData[i-1][0]=0;
+    bsmcData[i-1][0]=0;
     fclose(fp);
     srand(time(NULL));
 }
