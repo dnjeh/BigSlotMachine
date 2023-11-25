@@ -5,7 +5,7 @@ clock_t bsmCurTime=0, bsmOldTime=0;
 
 int main() {
     char t, tt[100];
-    int i, j, now=0, luckynum, fpre, fnow, fFrame;
+    int i, j, now=0, luckynum=0, fpre, fnow, fFrame, cham;
     system("mode con cols=100 lines=45");
     system("chcp 65001");
     system("cls");
@@ -16,6 +16,7 @@ int main() {
     drwInit();
     drwFirst();
 
+    luckynum=bsmDataCnt-1;
     bufChange();
     _beginthreadex(NULL, 0, readChar, 0, 0, NULL);
     for(bsmFrameNow=0;;bsmFrameNow++) {
@@ -36,12 +37,12 @@ int main() {
         else {
             if(!bsmRunNow) {
                 if(bsmFrameNow==0) {
+                    fnow=luckynum;
                     do {
                         luckynum=rand()%bsmDataCnt;
                     } while(!bsmcData[luckynum][0]);
-                    fFrame=0;        
-                    fnow=bsmFind(luckynum+20);
-                    fpre=bsmFind(fnow);
+                    fFrame=cham=0;        
+                    fpre=bsmFind(luckynum);
                 }
                 if(bsmFrameNow>=45) {
                     drwHandle(0, 0);
@@ -83,7 +84,14 @@ int main() {
                 if(fnow==luckynum) {
                     bsmRunNow++;
                 }
-                fpre=bsmFind(fnow);
+                if(cham<BSM_CHAM_MAX) {
+                    fpre=bsmFind(fnow);
+                    cham++;
+                }
+                else {
+                    fpre=luckynum;
+                    cham=0;
+                }
                 fFrame=0;
             }
             if(bsmRunNow>3) {

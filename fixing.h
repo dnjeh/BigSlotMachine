@@ -42,6 +42,8 @@
 #define DRW_ALARM_X 31
 #define DRW_ALARM_Y 26
 
+#define BSM_CHAM_MAX 10
+
 extern FILE *fp, *fp2;
 
 extern char pahCon[20];

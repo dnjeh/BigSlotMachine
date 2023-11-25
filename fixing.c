@@ -35,18 +35,19 @@ void bsmInit() {
             }
         } bsmiData[i][f-1]=it;
     } bsmDataCnt=i;
+    bsmiData[i-1][0]=0;
     fclose(fp);
     srand(time(NULL));
 }
 
 int bsmFind(int sta) {
-    int ret=sta+1;
-    for(ret%=bsmDataCnt;;ret=(ret+1)%bsmDataCnt) {
+    int ret=(sta+1);
+    for(ret%=bsmDataCnt;ret!=sta&&ret>=0&&ret<bsmDataCnt;ret=(ret+1)%bsmDataCnt) {
         if(bsmcData[ret][0]) {
             return ret;
         }
     }
-    return 0;
+    return bsmDataCnt-1;
 }
 
 void rmEnt(char *str, int siz) {
